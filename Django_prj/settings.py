@@ -56,7 +56,7 @@ ROOT_URLCONF = "Django_prj.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR/'single_pages'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
