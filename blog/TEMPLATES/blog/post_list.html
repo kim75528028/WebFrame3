@@ -15,7 +15,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./index.html">DoItDjango</a>
+        <a class="navbar-brand" href="/">DoItDjango</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,13 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./blog_list.html">Blog</a>
+              <a class="nav-link" href="/blog">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="./about_me.html">About_Me</a>
+                <a class="nav-link" href="/about_me">About_Me</a>
               </li>      
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -101,7 +101,7 @@
                         {% if p.head_image %}
                         <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head_image" height="300"/>
                         {% else %}
-                        <img class="card-img-top" src="https://loremflickr.com/800/200" alt="random image"/>
+                        <img class="card-img-top" src="https://picsum.photos/seed/{{ p.pk }}/800/200" alt="random image"/>
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }}</div>
@@ -109,7 +109,7 @@
                             {% if p.hook_text %}
                             <h5 class="text_muted">{{ p.hook_text }}</h5>
                             {% endif %}
-                            <p class="card-text">{{ p.content }}</p>
+                            <p class="card-text">{{ p.content | truncatewords:5 }}</p>
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
                         </div>
                     </div>
