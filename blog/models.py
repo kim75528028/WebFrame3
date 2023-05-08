@@ -13,6 +13,9 @@ class Category(models.Model):
     def get_absolute_url(self):
         return f'/blog/category/{self.slug}/'
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 
 class Post(models.Model): #일종의 DB구조,field 설정
     title = models.CharField(max_length=30)
@@ -29,6 +32,8 @@ class Post(models.Model): #일종의 DB구조,field 설정
 
     # on_delete = models.SET_NULL
     # CASCADE : 유저 삭제시 모든 데이터 삭제 / SET_NULL : 유저 삭제시 유저자리 NULL값으로
+
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'[{self.pk}] {self.title} :: {self.author}'
