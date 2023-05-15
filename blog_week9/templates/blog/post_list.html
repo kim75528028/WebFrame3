@@ -34,6 +34,15 @@
                         {% endif %}
                         <p class="card-text">{{p.content | truncatewords:15 }}</p>
 
+                        <!-- tag -->
+                        {% if p.tags.exists %}
+                            <i class="fas fa-tags"></i>
+                            {% for tag in p.tags.all %}
+                                <span class="badge badge-poll badge-light">{{ tag }}</span>
+                            {% endfor %}
+                            <br /><br />
+                        {% endif %}
+
                         <a class="btn btn-primary" href="{{p.get_absolute_url}}">Read more →</a>
                     </div>
                     <div class="card-footer text-muted">
